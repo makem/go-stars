@@ -4,7 +4,7 @@ import (
 	. "domain"
 	"errors"
 	"fmt"
-	. "github.com/ahmetalpbalkan/go-linq"
+	. "githubcom/ahmetalpbalkan/golinq"
 	"labix.org/v2/mgo/bson"
 	"math"
 	"storage"

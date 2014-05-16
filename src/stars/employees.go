@@ -3,9 +3,9 @@ package main
 import (
 	. "domain"
 	"fmt"
-	. "github.com/ahmetalpbalkan/go-linq"
 	"github.com/codegangsta/martini"
 	"github.com/martini-contrib/render"
+	. "githubcom/ahmetalpbalkan/golinq"
 	"net/http"
 	. "repository/employees"
 	. "repository/geography"
