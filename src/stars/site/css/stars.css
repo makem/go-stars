@@ -1,0 +1,38 @@
+.employees tr td img {
+	width: 35px;
+	border: 1px solid #ffffff;
+	outline: 1px solid #bfbfbf;
+	margin-right:10px;
+}
+
+.employees tr td{
+	height:50px;
+	vertical-align:middle;
+}
+
+table td.icon{
+	text-align:center;
+}
+
+table tr:hover{
+	cursor:pointer;
+}
+
+.green{
+	color: #638167 !important;
+}
+
+
+select.ng-invalid,
+input.ng-invalid~i,
+input.ng-invalid{
+ border: 1px solid red !important;
+}
+
+.current {
+	background-color: lightgray;
+}
+
+.inactive{
+	text-decoration: line-through !important;
+}

@@ -1,0 +1,194 @@
+<div class="row">
+	<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+		<h1 class="page-title txt-color-blueDark">
+			<i class="fa fa-table fa-fw "></i> 
+			Сотрудники 
+			<span>> 
+				Реестр
+			</span>
+		</h1>
+	</div>
+	<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+		<ul id="sparks" class="">
+			<li class="sparks-info">
+				<h5> Выручка <span class="txt-color-blue">$47,171</span></h5>
+				<div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
+					1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471
+				</div>
+			</li>
+			<li class="sparks-info">
+				<h5> Динамика  <span class="txt-color-purple"><i class="fa fa-arrow-circle-up" data-rel="bootstrap-tooltip" title="Increased"></i>&nbsp;45%</span></h5>
+				<div class="sparkline txt-color-purple hidden-mobile hidden-md hidden-sm">
+					110,150,300,130,400,240,220,310,220,300, 270, 210
+				</div>
+			</li>
+			<li class="sparks-info">
+				<h5> Заказов <span class="txt-color-greenDark"><i class="fa fa-shopping-cart"></i>&nbsp;2447</span></h5>
+				<div class="sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm">
+					110,150,300,130,400,240,220,310,220,300, 270, 210
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<!-- widget grid -->
+<section id="widget-grid">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-sm-12 col-md-12 col-lg-8">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-greenDark" id="theemployees" 
+			data-widget-colorbutton="false"
+			data-widget-editbutton="false"
+			data-widget-togglebutton="false"
+			data-widget-deletebutton="false"
+			data-widget-fullscreenbutton="false"
+			data-widget-custombutton="false"
+			data-widget-collapsed="false"
+			data-widget-sortable="false">
+			<header>
+				<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+				<h2>Реестр сотрудников </h2>
+
+			</header>
+
+			<!-- widget div-->
+			<div>
+
+				<!-- widget edit box -->
+				<div class="jarviswidget-editbox">
+					<!-- This area used as dropdown edit box -->
+
+				</div>
+				<!-- end widget edit box -->
+
+				<!-- widget content -->
+				<div class="widget-body no-padding">
+					
+					<div class="widget-body-toolbar">
+						
+						<div class="row">
+							<div class="col-xs-3 col-sm-7 col-md-7 col-lg-7 text-left">
+								
+								<button class="btn btn-success" ng-click="newEmployer()">
+									<i class="fa fa-plus"></i> <span class="hidden-mobile">Новый сотрудник</span>
+								</button>									
+							</div>	
+							<div class="col-xs-9 col-sm-5 col-md-5 col-lg-5">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-search"></i></span>
+									<input class="form-control" id="prepend" placeholder="Поиск" type="text" ng-model="search">
+								</div>
+							</div>
+							
+						</div>															
+					</div>
+					<div class="table-responsive">
+						
+						<table class="table table-hover employees">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>ФИО</th>
+									<th>Принят</th>
+									<th>Роли</th>
+									<th>Статус</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="emp in employees | filter:search" ng-click="editEmployee(emp)">
+									<td ng-bind="$index+1"></td>
+									<td><img src="{{getGenderImageUrl(emp)}}">{{emp.name}}</td>
+									<td ng-bind="emp.registered"></td>
+									<td ng-bind="emp.roles"></td>
+									<td class="icon"><i class="fa green" ng-class="{'fa-star': emp.active, 'fa-star-o':!emp.active}"></i></td>
+								</tr>
+							</tbody>
+						</table>
+						
+					</div>
+				</div>
+				<!-- end widget content -->
+
+			</div>
+			<!-- end widget div -->
+
+		</div>
+		<!-- end widget -->
+		
+		
+
+	</article>
+	<!-- WIDGET END -->
+	<article class="col-sm-12 col-md-12 col-lg-4">
+		<!-- Widget ID (each widget will need unique ID)-->
+		<div class="jarviswidget jarviswidget-color-red" id="medcomissions" 
+		data-widget-colorbutton="false"
+		data-widget-editbutton="false"
+		data-widget-togglebutton="false"
+		data-widget-deletebutton="false"
+		data-widget-fullscreenbutton="false"
+		data-widget-custombutton="false"
+		data-widget-collapsed="false"
+		data-widget-sortable="false">
+		<header>
+			<span class="widget-icon"> <i class="fa fa-star"></i> </span>
+			<h2>Просрочки по медкомиссиям </h2>
+		</header>
+		
+
+		<div class="col-lg-12">
+			<div class="alert alert-danger alert-block">
+				<div class="content" style="margin-left:20px;margin-top:10px;">
+					<ul class="list-inline friends-list">
+						<li><img src="img/avatars/1.png" alt="friend-1">
+						</li>
+						<li><img src="img/avatars/2.png" alt="friend-2">
+						</li>
+						<li><img src="img/avatars/3.png" alt="friend-3">
+						</li>
+						<li><img src="img/avatars/4.png" alt="friend-4">
+						</li>
+						<li><img src="img/avatars/5.png" alt="friend-5">
+						</li>
+						<li><img src="img/avatars/male.png" alt="friend-6">
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="alert alert-warning alert-block">
+				<ul class="list-inline friends-list">
+					<li><img src="img/avatars/male.png" alt="friend-1">
+					</li>
+					<li><img src="img/avatars/female.png" alt="friend-2">
+					</li>
+					<li><img src="img/avatars/female.png" alt="friend-3">
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+	<!-- end widget -->
+</article>
+</div>
+
+<!-- end row -->
+
+</section>
+<!-- end widget grid -->
+
+
+<script type="text/javascript">
+
+	// DO NOT REMOVE : GLOBAL FUNCTIONS!
+	pageSetUp();
+
+	// PAGE RELATED SCRIPTS
+</script>

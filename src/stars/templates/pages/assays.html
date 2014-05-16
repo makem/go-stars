@@ -1,0 +1,174 @@
+<div class="row">
+	<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+		<h1 class="page-title txt-color-blueDark">
+			<i class="fa fa-table fa-fw "></i>
+			Сотрудники
+			<span>>
+				Медкомиссии
+			</span>
+		</h1>
+	</div>
+	<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+		<ul id="sparks" class="">
+			<li class="sparks-info">
+				<h5> Выручка <span class="txt-color-blue">$47,171</span></h5>
+				<div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
+					1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471
+				</div>
+			</li>
+			<li class="sparks-info">
+				<h5> Динамика  <span class="txt-color-purple"><i class="fa fa-arrow-circle-up" data-rel="bootstrap-tooltip" title="Increased"></i>&nbsp;45%</span></h5>
+				<div class="sparkline txt-color-purple hidden-mobile hidden-md hidden-sm">
+					110,150,300,130,400,240,220,310,220,300, 270, 210
+				</div>
+			</li>
+			<li class="sparks-info">
+				<h5> Заказов <span class="txt-color-greenDark"><i class="fa fa-shopping-cart"></i>&nbsp;2447</span></h5>
+				<div class="sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm">
+					110,150,300,130,400,240,220,310,220,300, 270, 210
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<!-- widget grid -->
+<section id="widget-grid">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-greenDark" id="assayemployees"
+			data-widget-colorbutton="false"
+			data-widget-editbutton="false"
+			data-widget-togglebutton="false"
+			data-widget-deletebutton="false"
+			data-widget-fullscreenbutton="false"
+			data-widget-custombutton="false"
+			data-widget-collapsed="false"
+			data-widget-sortable="false">
+			<header>
+				<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+				<h2>Медкомиссии </h2>
+
+			</header>
+
+			<!-- widget div-->
+			<div>
+
+				<!-- widget edit box -->
+				<div class="jarviswidget-editbox">
+					<!-- This area used as dropdown edit box -->
+
+				</div>
+				<!-- end widget edit box -->
+
+				<!-- widget content -->
+				<div class="widget-body no-padding">
+
+					<div class="widget-body-toolbar">
+
+						<div class="row">
+							<div class="col-xs-9 col-sm-5 col-md-5 col-lg-3">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-search"></i></span>
+									<input class="form-control" id="prepend" placeholder="Поиск" type="text" ng-model="search">
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="table-responsive">
+						<table class="table table-hover employees" style="margin-bottom:-1px;">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th style="width:190px;">ФИО</th>
+									<th style="width:60px;">Статус</th>
+									<th style="width:125px;">Специалист</th>
+									<th style="width:50px;">Требуется</th>
+									<th>Дата последнего визита</th>
+								</tr>
+							</thead>
+						</table>
+					<div class="table-responsive col-lg-4" style="padding:0;">
+						<table class="table table-hover employees">
+							<tbody>
+								<tr ng-repeat="emp in employees | filter:search" ng-click="select(emp)" ng-class="{current:selected.login == emp.login}">
+									<td ng-bind="$index+1"></td>
+									<td><img src="{{getGenderImageUrl(emp)}}">{{emp.name}}</td>
+									<td class="icon"><i class="fa green" ng-class="{'fa-star': emp.active, 'fa-star-o':!emp.active}"></i></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="table-responsive col-lg-8" style="margin-top:1px;padding:0;">
+						<form action="" id="order-form" ng-hide="!selected" class="smart-form" novalidate="novalidate" name="employeeForm" style="border-left: 1px solid rgba(0, 0, 0, 0.1);margin-left:-1px;">
+							<fieldset>
+								<div class="row" ng-repeat="v in visits">
+									<section class="col col-3">
+										<span ng-class="getAssayClass(v.status)" ng-bind-template="{{v.assay}} ({{v.period}} мес.) "></span>
+									</section>
+									<section class="col col-1">
+										<label class="checkbox">
+											<input type="checkbox" name="active" ng-model="v.active">
+											<i></i>{{{.Actual}}}
+										</label>
+									</section>
+									<section class="col col-4">
+										<label class="input"> <i class="icon-append fa fa-calendar"></i>
+											<input type="text" id="visitdate" placeholder="Дата визита" ng-model="v.visited">
+										</label>
+									</section>
+									<section class="col col-2">
+									<div>
+										<span class="badge" style="padding:5px !important;" ng-class="getLabelClass(v.status)" ng-bind="v.message"></span>
+										</div>
+									</section>
+								</div>
+							</fieldset>
+							<footer>
+
+
+							<button type="submit" class="btn btn-primary" ng-click="submit()">Сохранить
+							</button>
+						</footer>
+						</form>
+
+					</div>
+
+
+					</div>
+				</div>
+				<!-- end widget content -->
+
+			</div>
+			<!-- end widget div -->
+
+		</div>
+		<!-- end widget -->
+
+
+
+	</article>
+	<!-- WIDGET END -->
+
+</div>
+
+<!-- end row -->
+
+</section>
+<!-- end widget grid -->
+
+
+<script type="text/javascript">
+
+	// DO NOT REMOVE : GLOBAL FUNCTIONS!
+	pageSetUp();
+
+	// PAGE RELATED SCRIPTS
+</script>

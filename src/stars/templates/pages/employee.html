@@ -1,0 +1,160 @@
+
+<div class="jarviswidget" id="employee-form" data-widget-editbutton="false" data-widget-custombutton="false">
+	<header>
+		<span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+		<h2 ng-bind-template="{{header}} : {{employee.lastName}} {{employee.firstName}} {{employee.middleName}}"></h2>				
+		</header>
+
+	<!-- widget div-->
+	<div>
+		
+		<!-- widget edit box -->
+		<div class="jarviswidget-editbox">
+			<!-- This area used as dropdown edit box -->
+			
+		</div>
+		<!-- end widget edit box -->
+		
+		<!-- widget content -->
+		<div class="widget-body no-padding">
+			
+			<form action="" id="order-form" class="smart-form" novalidate="novalidate" name="employeeForm">
+				<header>{{{.PersonalInfo}}}</header>
+				<fieldset>
+					<div class="row">
+						<section class="col col-3">
+							<label class="input"> <i class="icon-append fa fa-user"></i>
+								<input type="text" name="lastName" placeholder="{{{.LastName}}}" ng-model="employee.lastName" required>
+							</label>
+						</section>					
+						<section class="col col-3">
+							<label class="input"> <i class="icon-append fa fa-user"></i>
+								<input type="text" name="firstName" placeholder="{{{.FirstName}}}" ng-model="employee.firstName" required>
+							</label>
+						</section>
+						<section class="col col-3">
+							<label class="input"> <i class="icon-append fa fa-user"></i>
+								<input type="text" name="middleName" placeholder="{{{.MiddleName}}}" ng-model="employee.middleName">
+							</label>
+						</section>
+						<section class="col col-3">
+							<div class="inline-group">
+								<label class="radio">
+									<input type="radio" name="gender"  ng-model="employee.gender" ng-value="'M'" required>
+									<i></i>{{{.Man}}}
+								</label>
+								<label class="radio">
+									<input type="radio" name="gender" ng-model="employee.gender" ng-value="'F'" required>
+									<i></i>{{{.Woman}}}
+								</label>
+							</div>
+						</section>						
+					</div>
+
+					<div class="row">
+						<section class="col col-3">
+							<label class="input"> <i class="icon-append fa fa-key"></i>
+					 			<input type="text" id="login" placeholder="{{{.Login}}}" ng-model="employee.login" required ng-disabled="!isNewEmployee()">
+							</label>
+						</section>					
+						<section class="col col-3">
+							<label class="input"> <i class="icon-append fa fa-calendar"></i>
+					 			<input type="text" id="birthdate" placeholder="{{{.BirthDate}}}" ng-model="employee.birthDate" required>
+							</label>
+						</section>
+					
+						<section class="col col-3">
+							<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
+								<input type="email" name="email" placeholder="{{{.Email}}}" ng-model="employee.email">
+							</label>
+						</section>
+						<section class="col col-3">
+							<label class="input"> <i class="icon-append fa fa-phone"></i>
+								<input type="tel" name="phone" placeholder="{{{.Phone}}}" data-mask="(999) 999-9999" ng-model="employee.phone">
+							</label>
+						</section>
+
+					</div>
+				</fieldset>
+				<header>{{{.PositionInfo}}}</header>
+				<fieldset>
+					<div class="row">
+						<section class="col col-2">
+							<label class="select">
+							<select name="country" ng-model="employee.country" ng-options="c.code as c.name for c in countries" placeholder="{{{.Country}}}" required>
+    						</select><i></i>
+							</label>
+						</section>
+						<section class="col col-3">
+							<label class="input"> <i class="icon-append fa fa-calendar"></i>
+								<input type="text" id="registerdate" placeholder="{{{.RegisterDate}}}" ng-model="employee.jobStarted" required>
+							</label>
+						</section>
+						<section class="col col-2">
+							<label class="checkbox">
+								<input type="checkbox" name="active" ng-model="employee.active">
+								<i></i>{{{.Actual}}}
+							</label>
+						</section>
+						<section class="col col-1">
+							<label class="checkbox">
+								<input type="checkbox" name="credit" ng-model="employee.credit">
+								<i></i>{{{.Credit}}}
+							</label>
+						</section>
+						<section class="col col-4">
+							<div class="rating">
+								<input type="radio" name="stars-rating" ng-model="employee.mark" id="stars-rating-5" ng-value="5">
+								<label for="stars-rating-5"><i class="fa fa-star"></i></label>
+								<input type="radio" name="stars-rating" ng-model="employee.mark" id="stars-rating-4" ng-value="4">
+								<label for="stars-rating-4"><i class="fa fa-star"></i></label>
+								<input type="radio" name="stars-rating" ng-model="employee.mark"  id="stars-rating-3" ng-value="3">
+								<label for="stars-rating-3"><i class="fa fa-star"></i></label>
+								<input type="radio" name="stars-rating" ng-model="employee.mark"  id="stars-rating-2" ng-value="2">
+								<label for="stars-rating-2"><i class="fa fa-star"></i></label>
+								<input type="radio" name="stars-rating" ng-model="employee.mark"  id="stars-rating-1" ng-value="1">
+								<label for="stars-rating-1"><i class="fa fa-star"></i></label>
+							</div>						
+						</section>											
+					</div>
+					<div class="row">
+
+						<section class="col col-6">
+							<label class="textarea"> <i class="icon-append fa fa-comment"></i> 										
+								<textarea rows="5" name="address" placeholder="{{{.Address}}}" ng-model="employee.address"></textarea> 
+							</label>
+						</section>
+						<section class="col col-6">
+							<label class="checkbox" ng-repeat="role in employee.roles">
+								<input type="checkbox" ng-model="role.active" ng-required="!anyRoleSelected()"> <i></i>{{role.name}} 
+							</label>
+						</section>						
+					</div>
+				</fieldset>
+						<footer>
+							<button class="btn btn-cancel" ng-click="cancel()">{{{.Cancel}}}
+							</button>
+						
+							<button type="submit" class="btn btn-primary" ng-click="submit()" ng-disabled="employeeForm.$invalid">{{{.Save}}}
+							</button>
+						</footer>
+					</form>
+
+				</div>
+				<!-- end widget content -->
+				
+			</div>
+			<!-- end widget div -->
+			
+		</div>
+
+		<!-- end widget -->				
+<script type="text/javascript">
+
+	// DO NOT REMOVE : GLOBAL FUNCTIONS!
+	pageSetUp();
+
+	// PAGE RELATED SCRIPTS
+	
+
+</script>
